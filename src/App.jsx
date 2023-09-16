@@ -10,11 +10,19 @@ import Bookmarks from './components/Bookmarks/Bookmarks';
 
 function App() {
   const [bookmarks,setBookmarks] = useState([]);
+  const [creditHours,setCreditHours] = useState(0);
 
 
   const handleAddToBookmark = blog => {
     const newBookmarks = [...bookmarks,blog];
     setBookmarks(newBookmarks);
+
+   
+  }
+
+  const handleAddToCredits = time =>{
+    const newCreditHours = creditHours + time;
+    setCreditHours (newCreditHours);
   }
 
 
@@ -22,8 +30,9 @@ function App() {
     <>
      <Header></Header>
      <div className='flex justify-evenly'>
-        <Blogs handleAddToBookmark = {handleAddToBookmark}></Blogs>
-        <Bookmarks bookmarks={bookmarks}></Bookmarks>
+        <Blogs handleAddToBookmark = {handleAddToBookmark}
+              handleAddToCredits = {handleAddToCredits}></Blogs>
+        <Bookmarks bookmarks={bookmarks} creditHours ={creditHours}></Bookmarks>
       </div>
     </>
   )

@@ -3,7 +3,7 @@ import { BsBook } from 'react-icons/bs';
 import { PiCurrencyDollarLight } from 'react-icons/pi';
 
 
-const Blog = ({blog,handleAddToBookmark}) => {
+const Blog = ({blog,handleAddToBookmark,handleAddToCredits}) => {
     const{img,title,details,credit,price} = blog;
 
     return (
@@ -31,7 +31,8 @@ const Blog = ({blog,handleAddToBookmark}) => {
                     </h4>
                     </div>
                     <button 
-                        onClick={() => handleAddToBookmark(blog)} 
+                        onClick={() =>{handleAddToBookmark(blog)
+                                    handleAddToCredits(credit)} }
                         className='bg-blue-500 text-white rounded-lg h-10 m-3'>Select</button>
             </div>
         </div>
@@ -40,7 +41,8 @@ const Blog = ({blog,handleAddToBookmark}) => {
 
 Blog.propTypes = {
          blog: PropTypes.object.isRequired,
-         handleAddToBookmark: PropTypes.func
+         handleAddToBookmark: PropTypes.func,
+         handleAddToCredits: PropTypes.func
      }
 
 export default Blog;
