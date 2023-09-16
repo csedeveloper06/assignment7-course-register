@@ -3,10 +3,11 @@ import { BsBook } from 'react-icons/bs';
 import { PiCurrencyDollarLight } from 'react-icons/pi';
 
 
-const Card = ({card}) => {
-    const{img,title,details,credit,price} = card;
+const Blog = ({blog,handleAddToBookmark}) => {
+    const{img,title,details,credit,price} = blog;
 
     return (
+        
         <div className='bg-white p-3 rounded-xl w-72 shadow-2xl'>
             <div className="card-img p-2">
                 <img className='w-64 h-40' src={img} alt="" />
@@ -23,19 +24,23 @@ const Card = ({card}) => {
                     <h4 className='desc text-sm'>
                         Price: {price} 
                     </h4>
-                   
+                    
                     <button className='text-xl'><BsBook></BsBook></button>
                     <h4 className='desc text-sm'>
                         Credit: {credit}hr
                     </h4>
-                </div>
-                <button className='bg-blue-500 text-white rounded-lg h-10 m-3'>Select</button>
+                    </div>
+                    <button 
+                        onClick={() => handleAddToBookmark(blog)} 
+                        className='bg-blue-500 text-white rounded-lg h-10 m-3'>Select</button>
             </div>
         </div>
-    );
+     );
 };
 
-Card.propTypes = {
-    card: PropTypes.object.isRequired
-}
-export default Card;
+Blog.propTypes = {
+         blog: PropTypes.object.isRequired,
+         handleAddToBookmark: PropTypes.func
+     }
+
+export default Blog;

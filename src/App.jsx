@@ -1,18 +1,29 @@
 import { useState } from 'react'
 import './App.css'
-import Cards from './components/Cards/Cards'
-import Cart from './components/Cart/Cart'
+import Header from './components/Header/Header';
+import Blogs from './components/Blogs/Blogs';
+import Bookmarks from './components/Bookmarks/Bookmarks';
+
+
 
 
 
 function App() {
+  const [bookmarks,setBookmarks] = useState([]);
+
+
+  const handleAddToBookmark = blog => {
+    const newBookmarks = [...bookmarks,blog];
+    setBookmarks(newBookmarks);
+  }
 
 
   return (
     <>
-      <div className='flex justify-evenly'>
-        <Cards></Cards>
-        <Cart></Cart>
+     <Header></Header>
+     <div className='flex justify-evenly'>
+        <Blogs handleAddToBookmark = {handleAddToBookmark}></Blogs>
+        <Bookmarks bookmarks={bookmarks}></Bookmarks>
       </div>
     </>
   )
