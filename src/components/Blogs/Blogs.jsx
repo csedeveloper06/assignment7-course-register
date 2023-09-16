@@ -5,7 +5,7 @@ import Blog from "../Blog/Blog";
 
 
 
-const Blogs = ({handleAddToBookmark,handleAddToCredits}) => {
+const Blogs = ({handleAddToBookmark,handleAddToCredits,handleAddRemainingHrs}) => {
     const [blogs,setBlogs] = useState([]);
 
     
@@ -18,12 +18,14 @@ const Blogs = ({handleAddToBookmark,handleAddToCredits}) => {
     return (
         <div className="grid grid-cols-1 gap-4 md:grid-cols-1 lg:grid-cols-3 pb-20">
             {
-              blogs.map((blog,time) => <Blog
+              blogs.map((blog,time,remain) => <Blog
                 key={blog.id} 
                 blog={blog}
                 time = {time}
+                remain = {remain}
                 handleAddToBookmark={handleAddToBookmark}
-                handleAddToCredits = {handleAddToCredits}></Blog>)
+                handleAddToCredits = {handleAddToCredits}
+                handleAddRemainingHrs = {handleAddRemainingHrs}></Blog>)
             }
         </div>
     );
@@ -31,7 +33,8 @@ const Blogs = ({handleAddToBookmark,handleAddToCredits}) => {
 
 Blogs.propTypes = {
     handleAddToBookmark:PropTypes.func,
-    handleAddToCredits:PropTypes.func
+    handleAddToCredits:PropTypes.func,
+    handleAddRemainingHrs:PropTypes.func
 }
 
 export default Blogs;
